@@ -35,6 +35,25 @@ For example, `heiper`, `heper`, `eiper`, and `eper` all work for `ᾗπερ`.
 
 Update the file `vendor/lsj.json` with any changes then run `yarn run build-dictionary`.
 
+## Looking words up from a script
+
+Headword keys in `vendor/lsj.json` keep LSJ's typography (hyphens such as
+`πολί̄τ-ης`, vowel-length marks, homograph numbers such as `ἀκρά (2)`, a leading
+`*` for unattested forms), which makes programmatic lookup awkward.
+`yarn build-plain-lookup` writes `vendor/plain-lookup.json`, which maps
+plain Greek words to entry keys in three tiers:
+
+- `headwords`: plain headword (case kept) to entry keys, e.g. `πολίτης`
+- `alternates`: lower-case variant forms listed in an entry's head, e.g. `μίγνυμι` to `μείγνυμι`
+- `bare`: accent-, breathing- and case-insensitive forms, e.g. `ποτε`
+
+Each value is a list, because homographs share a plain form. To read an entry
+in plain text from the command line:
+
+`node scripts/lookup.js λόγος`
+
+The normalisation functions are in `scripts/plain-lookup.js`.
+
 ## Running the development server
 
 `yarn start`

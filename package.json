@@ -32,6 +32,7 @@
     "deploy-perseids": "yarn run cleanup && gh-pages -d build -b perseids-build",
     "cleanup": "rm -rf node_modules/gh-pages/.cache",
     "build-dictionary": "node ./scripts/build-dictionary.js",
+    "build-plain-lookup": "node ./scripts/build-plain-lookup.js",
     "start": "react-app-rewired start",
     "build": "react-app-rewired --max-old-space-size=8192 build && cp build/index.html build/404.html",
     "lint": "eslint --ext=js --ext=jsx .",
